@@ -5,7 +5,8 @@ import './styles/base.scss'
 import './styles/form.scss'
 import './styles/header.scss'
 
-
+//import { checkURL } from './js/checkURL'
+import { handleSubmit } from './js/formHandler'
 
 alert("I EXIST")
 
@@ -19,3 +20,8 @@ alert("I EXIST")
  *      no
  *          show user message it's not valid URL
  */
+
+ export {
+    handleSubmit,
+    //checkURL
+}
