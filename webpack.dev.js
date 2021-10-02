@@ -1,3 +1,5 @@
+const path = require('path')
+const webpack = require('webpack')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
@@ -6,20 +8,26 @@ module.exports = {
     mode: 'development',
     devtool: 'source-map',
     stats: 'minimal',
+    //fixing functionality
+    output: {
+        path: path.join(__dirname, 'dist'),
+        filename: 'bundle.min.js',
+        libraryTarget: 'var',
+        library: 'Client'
+    },
     module: {
         rules: [
-            // TODO 1: Add babel Loader that match js files as development
-            // TODO 2: Add Loaders for
-            //    1. converting sass => css
-            //    2. Turns css into commonjs
-            //    3. Inject styles into DOM
-            /* HINT: structure
-        {
-          test: REGEX_TO_MATCH_FILES ex. /\.js$/,
-          exclude: /node_modules/,
-          loader: '',
-        }
-       */
+            //babel Loader that match js files as development
+            {
+                test: '/\.js$/',
+                exclude: /node_modules/,
+                loader: "babel-loader"
+            },
+            //Loaders that match Sass and convert to css files as development
+            {
+                test: /\.scss$/,
+                use: [ 'style-loader', 'css-loader', 'sass-loader' ]
+            }
         ]
     },
     plugins: [

@@ -1,5 +1,13 @@
 
-// TODO: include your scss file here
+// include scss files
+import './styles/resets.scss'
+import './styles/base.scss'
+import './styles/form.scss'
+import './styles/header.scss'
+
+
+
+alert("I EXIST")
 
 // TODO: get the button for submit
 // TODO: add event listener to it when the click to call handleSubmit function
