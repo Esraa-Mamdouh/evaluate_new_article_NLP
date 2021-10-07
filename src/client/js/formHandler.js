@@ -1,13 +1,13 @@
-import checkURL from './checkURL'
+import {checkURL} from './checkUrl'
 const fetch = require("node-fetch");
 
 function handleSubmit(event) {
-    event.preventDefault()
+    
 
     // clear UI before every result
     clearUI()
     // check what text was put into the form field
-    //TODO: check if enters valid URL
+    //check if enters valid URL
     let formText = document.getElementById('article-url').value
     const validURL=checkURL(formText)
     console.log("result=",validURL)

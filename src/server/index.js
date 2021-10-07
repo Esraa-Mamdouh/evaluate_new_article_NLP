@@ -79,8 +79,7 @@ app.post('/addURL',async (req, res) => {
         //5. if error occures while sending catch the error ad log it to console
          //test logs
       //res.status(400);
-      
-      res.send({errorMsg: 'Please enter a URL for a valid article URL and retry'})
+      res.send({errorMsg: 'Please enter a URL for a valid article and retry'})
       console.log("error= ",error.message)
       //res.send(error.message)
     }
@@ -97,6 +96,8 @@ app.listen(PORT, (error) => {
     console.log(`Server listening on port ${PORT}!`)
 })
 
-//TODO: export app to use it in the unit testing
-//TODO: add clear UI  before the next article test or show loading 
+//export app to use it in the unit testing
+module.exports={
+    app,
+}
 

@@ -24,18 +24,6 @@ module.exports = {
                 test: /\.scss$/,
                 use: [ MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ]
             }
-            // Add babel Loader that match js files as development
-            //  Add Loaders for
-            //    1. converting sass => css
-            //    2. Turns css into commonjs
-            //    3. Extract css into files
-            /* HINT: structure
-        {
-          test: REGEX_TO_MATCH_FILES ex. /\.js$/,
-          exclude: /node_modules/,
-          loader: '',
-        }
-       */
         ]
     },
     plugins: [

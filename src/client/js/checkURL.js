@@ -11,4 +11,4 @@ function checkURL(url) {
     return pattern.test(url);
     }
 
-export default checkURL;
+export {checkURL};
