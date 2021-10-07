@@ -54,6 +54,7 @@ app.post('/addURL',async (req, res) => {
         console.log("meaningCloudUrl= ", APIURL)
 
     //3. fetch the external API 
+    try {
     const {data} = await axios.get(APIURL)
      //test logs
     //const datanew= await JSON.parse(JSON.stringify(data));
@@ -61,7 +62,7 @@ app.post('/addURL',async (req, res) => {
     console.log("dataaaaaaaaaa= ", data)
     //console.log("dataaaaaaaaaa22222222222= ", datanew)
 
-      try {
+      
         //4. send data fetched Client 
         //test logs
         console.log("data= 1" ,data.sentence_list[0].text," 2  ",data.score_tag,"  3 ",data.agreement,"  4  ",data.subjectivity,"  5  ",data.confidence,"  6  ",data.irony )
@@ -72,11 +73,16 @@ app.post('/addURL',async (req, res) => {
         subjectivity: data.subjectivity,
         confidence: data.confidence,
         irony: data.irony,
+        errorMsg:'',
       })
     } catch (error) {
         //5. if error occures while sending catch the error ad log it to console
          //test logs
+      //res.status(400);
+      
+      res.send({errorMsg: 'Please enter a URL for a valid article URL and retry'})
       console.log("error= ",error.message)
+      //res.send(error.message)
     }
   })
   

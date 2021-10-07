@@ -1,3 +1,4 @@
+import checkURL from './checkURL'
 const fetch = require("node-fetch");
 
 function handleSubmit(event) {
@@ -8,14 +9,21 @@ function handleSubmit(event) {
     // check what text was put into the form field
     //TODO: check if enters valid URL
     let formText = document.getElementById('article-url').value
-    //checkURL(formText)
+    const validURL=checkURL(formText)
+    console.log("result=",validURL)
 
     //test logs
     console.log("::: Form Submitted :::")
     console.log("form text= ",formText)
- 
+    
+    
     // post req to the server to acess external UI 
-    postURL(formText)
+    if(validURL){
+        postURL(formText)
+    }else{
+        console.log("inside error handler")
+        alert('please Enter a valid URL and retry')
+    }
 
 }
 
@@ -35,12 +43,19 @@ function postURL(url=" "){
         res=res.json()
         console.log("res2= ",res)
         return res
-        
+          
     })
     .then((res)=> {
         console.log("inside then")
-        console.log("INSIDE RES", res)
-        updateUI(res)
+        console.log("INSIDE RES", res,"errorMsg=",res.errorMsg)
+        if(res.errorMsg ==''){
+            updateUI(res)
+        }else{
+            alert(res.errorMsg)
+        }
+
+        //clear input field
+        document.getElementById('article-url').value = ''
         
     }).catch((rej)=>{
         console.log("inside catch client")
