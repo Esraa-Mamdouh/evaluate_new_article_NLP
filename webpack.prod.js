@@ -33,8 +33,8 @@ module.exports = {
         }),
         //new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
         new MiniCssExtractPlugin({ filename: "[name].css" }),
-        //TODO: REMOVE COMMENT
-        //new WorkboxPlugin.GenerateSW(),
+        
+        new WorkboxPlugin.GenerateSW(),
     ],
     optimization:{
         minimizer: [new TerserPlugin({}), new OptimizeCssAssetsPlugin({})]

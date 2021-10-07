@@ -10,20 +10,13 @@ import { handleSubmit } from './js/formHandler'
 
 alert("I EXIST")
 
-// TODO: get the button for submit
-//const submit = document.querySelector('.btn-submit')
-// TODO: add event listener to it when the click to call handleSubmit function
-//submit.addEventListener("click",()=>handleSubmit())
-
-window.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM fully loaded and parsed');
-
-    const form = document.getElementById('form')
-    form.addEventListener('submit', (event) => {
-        event.preventDefault()
-        handleSubmit()
-    })
-});
+// get the form I'll click submit
+const form = document.getElementById('form')
+// event listener to it when the click to call handleSubmit function
+form.addEventListener("submit",(evt)=>{
+    evt.preventDefault()
+    handleSubmit()
+})
 
  export {
     handleSubmit,
